@@ -19,7 +19,6 @@ Um dos padrões de design mais utilizados é o padrão "Factory" (Fábrica). Atr
 cria o objeto que você gostaria de usar. Considere o seguinte exemplo desse padrão de design:
 
 ``
-{% highlight php %}
 <?php
 class Automobile
 {
@@ -50,7 +49,7 @@ class AutomobileFactory
 $veyron = AutomobileFactory::create('Bugatti', 'Veyron');
 
 print_r($veyron->get_make_and_model()); // imprime "Bugatti Veyron"
-{% endhighlight %}
+
 ``
 
 Esse código usa uma "Factory" para criar o objeto do tipo "Automobile". Existem dois possíveis benefícios para criar seu
