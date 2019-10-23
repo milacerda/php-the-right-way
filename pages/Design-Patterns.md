@@ -18,7 +18,7 @@ esforço pensando na sua arquitetura. Mas geralmente é uma boa ideia seguir à 
 Um dos padrões de design mais utilizados é o padrão "Factory" (Fábrica). Através dele uma classe simplesmente
 cria o objeto que você gostaria de usar. Considere o seguinte exemplo desse padrão de design:
 
-``
+```
  <?php
     class Automobile
     {
@@ -49,8 +49,8 @@ cria o objeto que você gostaria de usar. Considere o seguinte exemplo desse pad
     $veyron = AutomobileFactory::create('Bugatti', 'Veyron');
 
     print_r($veyron->get_make_and_model()); // imprime "Bugatti Veyron"
+```
 
-``
 
 Esse código usa uma "Factory" para criar o objeto do tipo "Automobile". Existem dois possíveis benefícios para criar seu
 código dessa forma, o primeiro é que se você precisar mudar, renomear ou substituir a classe Automobile futuramente você
