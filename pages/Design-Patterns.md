@@ -69,7 +69,7 @@ pouco maior ou mais complexo você pode se salvar de muitos problemas com o uso 
 Quando arquitetando uma aplicação web, é comum fazer sentido tanto conceitualmente quanto arquitetonicamente permitir o
 acesso a somente uma instância de uma classe em particular, o padrão "Singleton" nos permite realizar essa tarefa.
 
-``
+```
 <?php
 class Singleton
 {
@@ -131,7 +131,7 @@ var_dump($anotherObj === Singleton::getInstance());      // bool(false)
 
 var_dump($anotherObj === SingletonChild::getInstance()); // bool(true)
 
-``
+```
 
 O código acima implementa o padrão "Singleton" usando uma [variável *estática*](http://php.net/language.variables.scope#language.variables.scope.static)
 e o método estático de criação `getInstance()`.
@@ -163,7 +163,7 @@ atual. Existem várias variações do padrão "Strategy" o mais simples deles é
 O primeiro bloco de código apresenta uma familia de algorítimos; você pode querer uma array serializado, um JSON ou
 talvez somente um array de dados:
 
-``
+```
 <?php
 
 interface OutputInterface
@@ -194,7 +194,7 @@ class ArrayOutput implements OutputInterface
         return $arrayOfData;
     }
 }
-``
+```
 
 Através do encapsulamento do algoritimo acima você está fazendo seu código de forma limpa e clara para que outros
 desenvolvedores possam facilmente adicionar novos tipos de saída sem que isso afete o código cliente.
@@ -206,7 +206,7 @@ da implementação de uma interface comum você verá na próxima seção que vo
 O próximo bloco de código demonstra como uma classe cliente relizando uma chamada deve usar um desses algorítimos e
 ainda melhor definir o comportamento necessário em tempo de execução:
 
-``
+```
 <?php
 class SomeClient
 {
@@ -222,14 +222,14 @@ class SomeClient
         return $this->output->load();
     }
 }
-``
+```
 
 A classe cliente tem uma propriedade private que deve ser definida em tempo de execução e ser do tipo 'OutputInterface'
 uma vez que essa propriedade é definida uma chamada a loadOutput() irá chamar o método load() na classe concreta do tipo
 'output' que foi definida.
 
-``
-{% highlight php %}
+```
+
 <?php
 $client = new SomeClient();
 
@@ -241,8 +241,7 @@ $data = $client->loadOutput();
 $client->setOutput(new JsonStringOutput());
 $data = $client->loadOutput();
 
-{% endhighlight %}
-``
+```
 
 * [Padrão "Strategy" na Wikipedia](http://en.wikipedia.org/wiki/Strategy_pattern)
 
