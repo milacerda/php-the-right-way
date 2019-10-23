@@ -18,6 +18,7 @@ esforço pensando na sua arquitetura. Mas geralmente é uma boa ideia seguir à 
 Um dos padrões de design mais utilizados é o padrão "Factory" (Fábrica). Através dele uma classe simplesmente
 cria o objeto que você gostaria de usar. Considere o seguinte exemplo desse padrão de design:
 
+``
 {% highlight php %}
 <?php
 class Automobile
@@ -50,6 +51,7 @@ $veyron = AutomobileFactory::create('Bugatti', 'Veyron');
 
 print_r($veyron->get_make_and_model()); // imprime "Bugatti Veyron"
 {% endhighlight %}
+``
 
 Esse código usa uma "Factory" para criar o objeto do tipo "Automobile". Existem dois possíveis benefícios para criar seu
 código dessa forma, o primeiro é que se você precisar mudar, renomear ou substituir a classe Automobile futuramente você
@@ -68,6 +70,7 @@ pouco maior ou mais complexo você pode se salvar de muitos problemas com o uso 
 Quando arquitetando uma aplicação web, é comum fazer sentido tanto conceitualmente quanto arquitetonicamente permitir o
 acesso a somente uma instância de uma classe em particular, o padrão "Singleton" nos permite realizar essa tarefa.
 
+``
 {% highlight php %}
 <?php
 class Singleton
@@ -130,6 +133,7 @@ var_dump($anotherObj === Singleton::getInstance());      // bool(false)
 
 var_dump($anotherObj === SingletonChild::getInstance()); // bool(true)
 {% endhighlight %}
+``
 
 O código acima implementa o padrão "Singleton" usando uma [variável *estática*](http://php.net/language.variables.scope#language.variables.scope.static)
 e o método estático de criação `getInstance()`.
@@ -160,6 +164,8 @@ atual. Existem várias variações do padrão "Strategy" o mais simples deles é
 
 O primeiro bloco de código apresenta uma familia de algorítimos; você pode querer uma array serializado, um JSON ou
 talvez somente um array de dados:
+
+``
 {% highlight php %}
 <?php
 
@@ -192,6 +198,7 @@ class ArrayOutput implements OutputInterface
     }
 }
 {% endhighlight %}
+``
 
 Através do encapsulamento do algoritimo acima você está fazendo seu código de forma limpa e clara para que outros
 desenvolvedores possam facilmente adicionar novos tipos de saída sem que isso afete o código cliente.
@@ -202,6 +209,8 @@ da implementação de uma interface comum você verá na próxima seção que vo
 
 O próximo bloco de código demonstra como uma classe cliente relizando uma chamada deve usar um desses algorítimos e
 ainda melhor definir o comportamento necessário em tempo de execução:
+
+``
 {% highlight php %}
 <?php
 class SomeClient
@@ -219,10 +228,13 @@ class SomeClient
     }
 }
 {% endhighlight %}
+``
 
 A classe cliente tem uma propriedade private que deve ser definida em tempo de execução e ser do tipo 'OutputInterface'
 uma vez que essa propriedade é definida uma chamada a loadOutput() irá chamar o método load() na classe concreta do tipo
 'output' que foi definida.
+
+``
 {% highlight php %}
 <?php
 $client = new SomeClient();
@@ -236,6 +248,7 @@ $client->setOutput(new JsonStringOutput());
 $data = $client->loadOutput();
 
 {% endhighlight %}
+``
 
 * [Padrão "Strategy" na Wikipedia](http://en.wikipedia.org/wiki/Strategy_pattern)
 
