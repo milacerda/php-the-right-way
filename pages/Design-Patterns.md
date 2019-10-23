@@ -70,7 +70,6 @@ Quando arquitetando uma aplicação web, é comum fazer sentido tanto conceitual
 acesso a somente uma instância de uma classe em particular, o padrão "Singleton" nos permite realizar essa tarefa.
 
 ``
-{% highlight php %}
 <?php
 class Singleton
 {
@@ -131,7 +130,7 @@ $anotherObj = SingletonChild::getInstance();
 var_dump($anotherObj === Singleton::getInstance());      // bool(false)
 
 var_dump($anotherObj === SingletonChild::getInstance()); // bool(true)
-{% endhighlight %}
+
 ``
 
 O código acima implementa o padrão "Singleton" usando uma [variável *estática*](http://php.net/language.variables.scope#language.variables.scope.static)
@@ -165,7 +164,6 @@ O primeiro bloco de código apresenta uma familia de algorítimos; você pode qu
 talvez somente um array de dados:
 
 ``
-{% highlight php %}
 <?php
 
 interface OutputInterface
@@ -196,7 +194,6 @@ class ArrayOutput implements OutputInterface
         return $arrayOfData;
     }
 }
-{% endhighlight %}
 ``
 
 Através do encapsulamento do algoritimo acima você está fazendo seu código de forma limpa e clara para que outros
@@ -210,7 +207,6 @@ O próximo bloco de código demonstra como uma classe cliente relizando uma cham
 ainda melhor definir o comportamento necessário em tempo de execução:
 
 ``
-{% highlight php %}
 <?php
 class SomeClient
 {
@@ -226,7 +222,6 @@ class SomeClient
         return $this->output->load();
     }
 }
-{% endhighlight %}
 ``
 
 A classe cliente tem uma propriedade private que deve ser definida em tempo de execução e ser do tipo 'OutputInterface'
